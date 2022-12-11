@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App"; //Component
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+/* React.StrictMode :개발자환경,2번체크(배포시제외!) */
+const root = ReactDOM.createRoot(document.getElementById("root1"));
 root.render(
   <React.StrictMode>
     <App />
