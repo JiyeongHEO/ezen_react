@@ -1,0 +1,160 @@
+*김선화강사님
+* VUE 등 - MVC패턴
+* React - lib(framework아님,view만 있음), 태그(==node)의 component(조각)화 <-API(기능)내장되어있음.
+렌더링: render(){}, 리렌더링- DOM에서 비교 by virtualDOM ->update(1.전제UI를 virtual DOM에 복사=리렌더링 2.1과 현재를비교 3.바뀐 부분을 delete후 insert)
+DOM: xml or html 즉  정적임, 객체임, js와 css 적용, 트리
+Node: 브라우저 밖포함 js실행(ex)import ~ ), 웹팩 or Parcel(모듈화된코드 한파일로-Bundling,수정때마다 리로딩), Barbel: es6 ->es5 (crossBrowsing하려고), npm(재사용가능한코드 즉 Package 설치및버전관리), yarn(npm보다빠름, 캐시등 기타기능있음)
+
+*yarn 설치: npm install —global yarn
+yarn --version
+
+*VSC install : ESlint(js문법,스타일검사), Reactjs code snippets(React용 컴포넌트,lifeCycle등 작성시 단축단어 자동생성 스니펫 모음), 
+Prettier - Code formatter, Korean Language Pack for Visual Studio Code
+
+* git-bash -> yarn create react-app hello-react
+-> cd -> yarn start(localhost:3000)
+
+* npm&npx차이 https://hanamon.kr/npm-npx-%ec%b0%a8%ec%9d%b4/
+* JS연습용 https://jsbin.com/?html,output 
+
+
+* JSX : js+xml, 정식js아니라서 es5로 변환(Barbel)
+
+*.prettierrc 작성, 설정 ->Format on Save + Default Formatter 확인, https://prettier.io/docs/en/options.html 
+{
+    "singleQuote": true,
+    "semi": true,
+    "useTabs": false,
+    "tabWidth": 2
+}
+
+* [1]-3 Component. function,prototype vs Class (es5 vs es6)
+eg-es5) 장점: 선언이쉬움,메모리덜사용->속도빠름, build속도가빠름 -> '훅'개발로 단점극복
+function Dog(name){
+  this.name = name;
+}
+Dog.prototype.say = function(){
+  console.log(this.name + ": "+ "멍멍~~");
+}
+eg-es6) 장점: API사용이 쉬움
+class Dog{
+  constructor(name){
+    this.name = name;
+  }
+  say(){
+    console.log(this.name + ": "+ "멍멍~~");
+  }
+}
+const dog = new Dog("흰둥이");
+dog.say();
+
+
+*rsc+tab : function형자동생성
+
+* 화살표함수와 일반함수 차이 :this
+function ColourDog(){
+  this.name = "white dog";
+  return {
+    name:"black dog",
+    bark:function(){
+      console.log(this); //this는 ColourDog전체?, window나옴
+      console.log(this.name + ": 멍멍~~"); //black dog
+    }
+  }
+}
+
+function ColourDog(){
+  this.name = "white dog";
+  return {
+    name:"black dog",
+    bark:()=>{
+      console.log(this);  //this는 instance 
+      console.log(this.name + ": 멍멍~~");  //white dog
+    }
+  }
+}
+const colourDog = new ColourDog(); //instance
+colourDog.bark();
+
+
+
+
+02.2022-12-18 
+*Props: App.js -> Mycompoents.js, 부모로부터 받을수있다, props.children == <MyComponent>리액트!</MyComponent>의 '리액트!', 읽기전용
+
+*(es5 vs es6:비구조화 처리){}, []
+es5: props.name, props.children  | arr[0]...
+es6: const { name, children } = props; |  const [one,two] = arr; -> 
++)
+const person  = ["name_str","fam_str","age"];
+const [name, fam ] = person; <-여기
+console.log(name, fam);
++) 나머지argument, rest연산자: ...
+const snacks  = ["1","2","3","4","5","6"];
+const [first, ...final] = snacks;  <-여기
+console.log(final); //['2', '3', '4', '5', '6']
+
++1) function res(...args) <-기본 arr임
+{ console.log(args) } res(1,2,3,4);
++2)function res(arg1,arg2,...args){ console.log([arg1, arg2, args]) } 
+res(1,2,3,4);  //[1, 2, Array(2)
+res(1,2);  //[1, 2, Array(0)]
+res(1);  //[1, undefined, Array(0)]
+
+*typescript처럼: 타입이 뭔지 보기전에 알수있음, prop-types, 대소구분
+
+*isRequired: 예시favNumber
+
+*class형: MyComponent_cls.js, rcc+tab -> 비구조화 할당, 밖함수 안으로갖고와 static붙힘(https://reactjs.org/docs/static-type-checking.html , 속도이득)  
+
+*state: 바뀌는값, 2가지종류(calss형, 함수형인 useSate), 예시: Counter.js ->rcc +tab 
++1)constructor
++2) 이벤트(onClick)는 화살표, setState로 state값 변경
++2-1) setState(this.state.number+1 )추가해도 변경이 안됨 -> prevState!( this.setState((prevState, props)=>{ return 뭐}) //prev가 기존,props는 현재 props )
+
+
++3) static: class자체 method를 설정하는것
+class Person  {
+    constructor(name,age){
+       this.name  = name; this.age  = age;
+    }
+    static info(){
+      console.log("nice to meet you");
+    }
+}
+const jina = new Person("Jina", 30);
+Person.info(); //됨
+jina.info(); //err:is not a function, 상속안함, (static아니여도)상위접근불가, constructor만 확인가능
+--> 
+class Adult extends Person{   //상속하면됨
+  constructor(name,age, work){
+    super(name,age);
+    this.name = name; //super했으니까 nono
+    this.work  = work;
+  }
+}
+const jina = new Adult("Jina", 30, "designer");
+jina.info(); //됨
++3-1) class ClassRoom extends Array{  //상속
+  constructor(cname, ...students){  //나머지argument
+    super(...students);
+    this.cname  = cname;
+  }
+  add(student){
+    this.push(student);
+  }
+}
+const myC = new ClassRoom('A반',{name:"aa", mark:1},{name:"bb", mark:3},{name:"cc", mark:9});
+myC.add({name:"dd", mark:7})
+
++4) constructor() 생략버전
++5) callback 
+
+* useState (예시)Say.js : {{colour}} <- jsx안{}에 객체{}, setMessage, setColour, 대입으로set 하면안됨.(eg. class형 this.state~, 함수형 const[,]=useState() 모두) 
+
+* js에서 CRUD: 기존변경하는 mehod 사용 no!, 되는것(삽입,삭제,수정): concat, filter, map( nextArr.map(item => (item.id===1? {...item, value:false} : item )); )
+
+* JS이벤트
+handler(react에서 쓰는 방식, onClick대문자) vs listener(onclick)
+
+
