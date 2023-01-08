@@ -1,3 +1,6 @@
+==============================================================================
+2022-12-...
+
 *김선화강사님
 * VUE 등 - MVC패턴
 * React - lib(framework아님,view만 있음), 태그(==node)의 component(조각)화 <-API(기능)내장되어있음.
@@ -77,9 +80,8 @@ const colourDog = new ColourDog(); //instance
 colourDog.bark();
 
 
-
-
-02.2022-12-18 
+==============================================================================
+2022-12-18 
 *Props: App.js -> Mycompoents.js, 부모로부터 받을수있다, props.children == <MyComponent>리액트!</MyComponent>의 '리액트!', 읽기전용
 
 *(es5 vs es6:비구조화 처리){}, []
@@ -157,4 +159,10 @@ myC.add({name:"dd", mark:7})
 * JS이벤트
 handler(react에서 쓰는 방식, onClick대문자) vs listener(onclick)
 
+==============================================================================
+2023-01-08 EventPractice.js
+이벤트 :dom요소에만 설정가능(div,button,input,form등),내가만든건안됨(props를 전달한다 {this.props.onClick}는 됨 )
+ValidationSample.js , RefSample.js, ScrollBox.js
+[ ref ] : 
+[ hook ] : 폴더새로팜, 함수형
 

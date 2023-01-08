@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-
+/*
+    class형, state확인
+*/
 class Counter extends Component {
-
     // constructor(props){   
     //     super(props);  //from 부모
     //     //console.log(this); //counter가르킴
@@ -24,7 +25,7 @@ class Counter extends Component {
                 <h2> fix값: {fixedNum} </h2>
          
                 <button onClick={
-                    ()=>{this.setState((prevState1)=>({number: prevState1.number+1}));
+                    ()=>{ this.setState((prevState1)=>({number: prevState1.number+1}));
                     /* this.setState( {number: this.state.number+1},{} );
                     this.setState((prevState)=>({number: prevState.number+1})); */
                     
