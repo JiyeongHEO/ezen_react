@@ -6,7 +6,7 @@
 * class형-> 함수형-> 비구조화처리까지
 * [ ref ]
 react에서의 js의 id와 같음. (dom에 부여한이름). 03.ref내용.html.
-    +) dom 꼭사용하는경우: 특정input focus, 스크롤박스 조작시, canvas에그림넣을때 
+    +) dom 직접접근 하는경우: 특정input focus, 스크롤박스 조작시, canvas에그림넣을때 
     +)사용법- case 1. 특정input focus: 1) 그냥callBack으로 (ValidationSample.js(css) + App.js수정)  2)createRef(react내장, v16이상) - RefSample.js (current가 차이점)
     +) case2. 스크롤박스 조작시: 실행은 부모compo에서. ScrollBox.js -> App.js에서 버튼만들어서 scrolltoBottom 부름
 
