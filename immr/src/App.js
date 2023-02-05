@@ -189,8 +189,8 @@ const App = () => {
     id => {
       setData(
         produce (data, draft =>{
-          //draft.array.splice(draft.array.filter(info => info.id === id) , 1)
-          draft.array:draft.array.filter(info => info.id !== id)  //array: data.array.filter(info => info.id !== id)
+          draft.array.splice(draft.array.filter(info => info.id === id) , 1)
+          //draft.array.filter(info => info.id !== id)  //array: data.array.filter(info => info.id !== id)
          })  //여기. 
          //위 data지워도됨
         // draft.array.splice(draft.array.filter(info => info.id === id) , 1)도 가능(splice - 선택한것만 splice)
