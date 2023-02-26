@@ -44,4 +44,24 @@ function App() {
 
 */
 
+/*
+ * 2023-02-26
+1.[useSelector] [connect]대신 상태조회, const 결과 = useSelector(상태선택 함수):  CounterContainer.js
+2.[useDispatch] 로 액션 발생시킴, const dispatch = useDispatch(); dispatch({type:'액션이름'})
+-> 문제) increase(),decrease()가 계속 재렌더링됨 -> [useCallback] onIncrease, onDecrease로 변경:  CounterContainer.js
++) [connect]: 부모comp~ 리렌더링시 얘 props안바뀌었으면 리렌더링 안해서 성능최적화됨!
+vs [useSelector]: 성능최적화안되서... React.memo 사용 필요 : CounterContainer.js
+
+3.[useStore] store에 직접접근(흔하진 않음), const store=useStore(); store.dispatch({type:'액션이름'}); store.getState(): 안함ㅋ
+
+4.[useActions] (https://react-redux.js.org/api/hooks#recipe-useactions) dispatch의 반복을 최적화, (param1-액션함수들, param2-배열이고 이 안의 요소 바뀌면 액션dispatch) : lib폴더에 useActions.js 추가, TodosContainer.js
+*/
+
 export default App;
+
+
+/* 
+*2023-02-26
+*redux-미들웨어: yarn create react-app middleware 로 이동
+
+*/

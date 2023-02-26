@@ -19,7 +19,7 @@ const initialState = { number: 0 }
 
 //reducer①
 // function counter(state = initialState, action){
-//     console.log("counter 모듈 1")
+    console.log("counter 모듈 1")
 //     switch(action.type){
 //         case INCREASE: return{
 //             number: state.number +1
