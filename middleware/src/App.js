@@ -22,8 +22,8 @@ import SampleContainer from './containers/SampleContainer';
 
 +추가) yarn add axios -> lib폴더에 api.js 생성(getPost,getUsers 함수) -> moduels폴더에 sample.js생성,성공실패 처리하는 thunk함수 + reducer함수(handleActions()) ->index.js에서 sample.js추가 -> Components폴더 Sample.js 생성하여 화면으로 보이게..! -> SampleContainer.js생성하여 connect이용 
 
-*[ReFactoring]: lib폴더에 createReactThunk.js 생성 -> modules에 smaple.js에 적용
-modules에 loading.js생성 -> index.js에 추가 -> createReactThunk.js, sampleContainer.js 수정
+*[ReFactoring]: lib폴더에 createRequestThunk.js 생성 -> modules에 smaple.js에 적용
+modules에 loading.js생성 -> index.js에 추가 -> createRequestThunk.js, sampleContainer.js 수정
 ->sample.js 불필요다 제거, SampleContainer.js에서 async로
 
 2. [redux-saga] 위에꺼 다음 많이씀, '특정 액션 디스패치'시 '다른 액션 디스패치'하는 로직만들어서 처리가능
@@ -40,16 +40,16 @@ ES6에서는 generator함수를 사용한다(*표시)
 }
 const generator = generatorFunction();
 generator.next();
-VM139:2 hello
-{value: 1, done: false}done: falsevalue: 1[[Prototype]]: Object
+  VM139:2 hello
+  {value: 1, done: false}done: falsevalue: 1[[Prototype]]: Object
 generator.next();
-VM139:4 generator function
-{value: 2, done: false}
+  VM139:4 generator function
+  {value: 2, done: false}
 generator.next();
-VM139:6 function*
-{value: 3, done: false}
+  VM139:6 function*
+  {value: 3, done: false}
 generator.next();
-{value: 4, done: true}
+  {value: 4, done: true}
 
 
 

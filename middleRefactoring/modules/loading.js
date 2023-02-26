@@ -1,4 +1,4 @@
-import { createAction, handleActions } from "redux-actions";
+import { createAction, handleAction } from "redux-actions";
 
 const START_LOADING = 'loading/START_LOADING';
 const FINISH_LOADING = 'loading/FINISH_LOADING';
@@ -22,7 +22,7 @@ const initialState = {};
 //     },
 //     post:action.payload
 // }),
-const loading = handleActions(
+const loading = handleAction(
     {
         [START_LOADING]: (state, action) =>({
             ...state,

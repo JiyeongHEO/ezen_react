@@ -18,10 +18,24 @@ export const finishLoading = createAction(
 )
 
 const initialState = {};
+// const loading = handleAction(
+//     {
+//         [START_LOADING]: (state, action)=>( { ...state, [action.payload]:true } ),
+//         [FINISH_LOADING]: (state, action)=>( { ...state, [action.payload]:false } ) 
+//     },
+//     initialState
+// )
+
 const loading = handleAction(
     {
-        [START_LOADING]: (state, action)=>( { ...state, [action.payload]:true } ),
-        [FINISH_LOADING]: (state, action)=>( { ...state, [action.payload]:false } ) 
+        [START_LOADING]: (state, action) =>({
+            ...state,
+            [action.payload]:true
+        }),
+        [FINISH_LOADING]: (state,action) =>({
+            ...state,
+            [action.payload]:false
+        })
     },
     initialState
 )

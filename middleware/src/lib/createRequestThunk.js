@@ -6,13 +6,13 @@
 
 import { finishLoading, startLoading } from "../modules/loading"; //[ReFactoring]
 
-export default function createReactThunk(type, request){
+export default function createRequestThunk(type, request){
     //moduels의 액션
     const SUCCESS = `${type}_SUCCESS`;
     const FAILURE = `${type}_FAILURE`;
 
     return params => async dispatch=>{
-        dispatch({type})
+        dispatch({type});
         dispatch(startLoading(type)) //[ReFactoring]
         try{
             const response = await request(params)

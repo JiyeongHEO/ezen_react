@@ -2,7 +2,7 @@
 
 import { handleActions } from 'redux-actions';
 import * as api from '../lib/api';
-import createReactThunk from '../lib/createReactThunk';  //[ReFactoring] 
+import createRequestThunk from '../lib/createRequestThunk';  //[ReFactoring] 
 
 /*
 * 2023-02-26 시작
@@ -82,8 +82,8 @@ const GET_POST_SUCCESS = 'sample/GET_POST_SUCCESS'
 const GET_USERS = 'sampel/GET_USERS'
 const GET_USERS_SUCCESS = 'sampel/GET_USERS_SUCCESS'
 
-export const getPost = createReactThunk(GET_POST, api.getPost)
-export const getUsers = createReactThunk(GET_USERS, api.getUsers)
+export const getPost = createRequestThunk(GET_POST, api.getPost)
+export const getUsers = createRequestThunk(GET_USERS, api.getUsers)
 
 const initialState = {
     post: null,
