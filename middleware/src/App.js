@@ -28,7 +28,30 @@ modules에 loading.js생성 -> index.js에 추가 -> createReactThunk.js, sample
 
 2. [redux-saga] 위에꺼 다음 많이씀, '특정 액션 디스패치'시 '다른 액션 디스패치'하는 로직만들어서 처리가능
 사용하는경우 1) 기존요청 취소시(중복시) 2)특정액션후 다른액션발생위해, 리덕스와 관계없는 코드 실행시 3) 웹소켓(HTML5의 표준, ajax)사용시 3)API요청 실패해서 재요청시.
-ES6에서는 generator함수를 사용한다
+ES6에서는 generator함수를 사용한다(*표시)
++) function* generatorFunction(){
+    console.log('hello');
+    yield 1;
+    console.log('generator function');
+    yield 2;
+    console.log('function*')
+    yield 3;
+    return 4;
+}
+const generator = generatorFunction();
+generator.next();
+VM139:2 hello
+{value: 1, done: false}done: falsevalue: 1[[Prototype]]: Object
+generator.next();
+VM139:4 generator function
+{value: 2, done: false}
+generator.next();
+VM139:6 function*
+{value: 3, done: false}
+generator.next();
+{value: 4, done: true}
+
+
 
 
 */
