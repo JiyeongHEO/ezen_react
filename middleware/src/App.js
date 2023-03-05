@@ -28,6 +28,7 @@ modules에 loading.js생성 -> index.js에 추가 -> createRequestThunk.js, samp
 
 2. [redux-saga] 위에꺼 다음 많이씀, '특정 액션 디스패치'시 '다른 액션 디스패치'하는 로직만들어서 처리가능
 사용하는경우 1) 기존요청 취소시(중복시) 2)특정액션후 다른액션발생위해, 리덕스와 관계없는 코드 실행시 3) 웹소켓(HTML5의 표준, ajax)사용시 3)API요청 실패해서 재요청시.
+
 ES6에서는 generator함수를 사용한다(*표시)
 +) function* generatorFunction(){
     console.log('hello');
@@ -41,7 +42,7 @@ ES6에서는 generator함수를 사용한다(*표시)
 const generator = generatorFunction();
 generator.next();
   VM139:2 hello
-  {value: 1, done: false}done: falsevalue: 1[[Prototype]]: Object
+  {value: 1, done: false}  done: falsevalue: 1[[Prototype]]: Object
 generator.next();
   VM139:4 generator function
   {value: 2, done: false}
@@ -51,10 +52,21 @@ generator.next();
 generator.next();
   {value: 4, done: true}
 
-
-
-
+  +)function* watchGenerator(){
+    console.log("모니터링중")
+   let preaction = null;
+    while(true){
+       let action = yield
+         console.log("preaction")
+        preaction =action
+        if(action.type=='HELLO'){ console.log({type:'HI던 HELLO던..'}) }
+        
+        
+    }
+}
+const watch = watchGenerator(); watch.next()
 */
+
 function App() {
   return (
     <div className="App">
@@ -67,3 +79,25 @@ function App() {
 
 
 export default App;
+
+
+
+/*
+*2023-03-05
+https://open.kakao.com/o/gYENe97e
+[saga] yarn add redux-saga
+counter.js -> module/index.js ->index.js(쓰는 미들웨어 store에 모아놓음)->확인.
+sample.js시작 -> 상동 -> redux-dev에서 {type, payload:1} 확인
+->[saga-refactoring]
+createRequestSaga.js생성 -> sample.js에서 불필요제거(어쩌구__FAILURE,getPostSaga(), getUsersSaga(), {call,put} ) -> module/counter.js
+*/
+
+/*
+여기까지 Client사이드렌더링. UI렌더링을 모두 브라우저에서...(js모두 불러온다음에야 보여짐)
+
+
+[서버사이드 렌더링]
+* [remix] npx create-remix hello-remix -> yarn ->  yarn dev 실행, 정리.log 이동
+
+
+*/
