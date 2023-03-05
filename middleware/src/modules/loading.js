@@ -1,5 +1,5 @@
 
-import { createAction, handleAction } from "redux-actions"
+import { createAction, handleActions } from "redux-actions"
 
 /**
  * [ReFactoring] 
@@ -26,7 +26,7 @@ const initialState = {};
 //     initialState
 // )
 
-const loading = handleAction(
+const loading = handleActions(
     {
         [START_LOADING]: (state, action) =>({
             ...state,
